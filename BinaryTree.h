@@ -6,6 +6,7 @@
 #define PROYECTO_1_DATOS_BINARYTREE_H
 
 
+//:)
 class BinaryTree {
 
 };
