@@ -3,4 +3,8 @@ project(Proyecto-1-Datos)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Proyecto-1-Datos main.cpp)
+include_directories(src)
+
+add_subdirectory(src)
+
+#add_executable(Proyecto-1-Datos main.cpp)
