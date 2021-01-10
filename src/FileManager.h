@@ -4,13 +4,20 @@
 
 #ifndef PROYECTO_1_DATOS_FILEMANAGER_H
 #define PROYECTO_1_DATOS_FILEMANAGER_H
-#include <iostream>
+#include "Client.h"
+#include "BST.h"
+#include <fstream>
 
 class FileManager {
 private:
-    std::string filepath;
+    string filePath;
 public:
-    void setFilepath(const std::string &filepath);
+    FileManager();
+    void setFilepath(const string &filepath);
+    const string &getFilePath() const;
+    BST<Client> readClientCSV (const string &filename);
+    Client loadClient(ifstream &csvInfo);
+
 
 };
 
