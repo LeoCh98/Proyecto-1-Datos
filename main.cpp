@@ -4,6 +4,7 @@
 #include <iostream>
 
 int main() {
+    std::cout << "prueba \n";
     std::cout << "Hello World! " << std::endl;
     return 0;
 }
