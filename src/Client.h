@@ -17,6 +17,9 @@ private:
     string elderly;
     string category;
 public:
+    Client(const string &name, const string &id, const string &kid, const string &pregnant, const string &elderly,
+           const string &category);
+
     Client();
     virtual ~Client();
     const string &getName() const;

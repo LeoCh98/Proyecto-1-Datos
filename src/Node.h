@@ -20,6 +20,8 @@ public:
     Node<T>* findMin(Node<T>* t);
     Node<T>* insert(T x, Node<T>* t);
     Node<T>* makeEmpty(Node<T>* t);
+
+    T getData() const;
 };
 
 template <class T>
@@ -46,11 +48,9 @@ Node<T>* Node<T>::insert(T x, Node<T>* t)
         t->data = x;
         t->left = t->right = NULL;
     }
-    //int x1 = stoi(x.getId());           //Acá esta el problema al ingresar los datos al arbol
-    //int x2 = stoi(t->data.getId());     //como este ejemplo trata de int se compara mayor y menor para ingresarlos
-    else if(x < t->data)                          //y hay que modificar a que se compruebe el id, pero para eso no podria ser un Nodo con template
-        t->left = insert(x, t->left);   //ya que hay que acceder a la id como dato
-    else if(x > t->data)
+    else if(x.getId() < t->getData().getId())
+        t->left = insert(x, t->left);
+    else if(x.getId() > t->getData().getId())
         t->right = insert(x, t->right);
     return t;
 }
@@ -108,7 +108,7 @@ void Node<T>::inorder(Node<T>* t) {
     if(t == NULL)
         return;
     inorder(t->left);
-    std::cout << t->data << " ";
+    std::cout << t->getData().toString() << " ";
     inorder(t->right);
 }
 
@@ -122,6 +122,11 @@ Node<T>* Node<T>::find(Node<T>* t, T x) {
         return find(t->right, x);
     else
         return t;
+}
+
+template<class T>
+T Node<T>::getData() const {
+    return data;
 }
 
 

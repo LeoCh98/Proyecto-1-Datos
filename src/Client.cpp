@@ -4,6 +4,10 @@
 
 #include "Client.h"
 
+Client::Client(const string &name, const string &id, const string &kid, const string &pregnant, const string &elderly,
+               const string &category) : name(name), id(id), kid(kid), pregnant(pregnant), elderly(elderly),
+                                         category(category) {}
+
 Client::Client() = default;
 
 Client::~Client() {
@@ -63,4 +67,3 @@ string Client::toString() {
     output<<name<<","<<id<<","<<kid<<","<<pregnant<<","<<elderly<<","<<category<<endl;
     return output.str();
 }
-

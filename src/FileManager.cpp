@@ -9,7 +9,7 @@ FileManager::FileManager() {
     file_path = file_path.substr(0, file_path.rfind("/"));
     string dir_path = file_path.substr(0, file_path.rfind("/"));
     dir_path = dir_path.substr(0, file_path.rfind("/"));
-    filePath = dir_path + "/Archivos/";
+    filePath = dir_path + "/archivos/";
 
 }
 
@@ -26,7 +26,7 @@ BST<Client> FileManager::readClientCSV(const string &filename) {
     BST<Client> _clientTree;
     try {
         csv.open( filePath + filename, ios::in);
-        if(csv.good()) {
+        if(csv.good()) { //+
             csv.seekg(52); //Salto de linea para no leer la primera linea del archivo (en teoria en esa primera linea hay 52 caracteres)
             while (!csv.eof() && csv.good()) {
                 Client _client = loadClient(csv);
