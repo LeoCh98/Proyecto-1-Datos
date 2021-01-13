@@ -4,7 +4,7 @@
 
 #ifndef PROYECTO_1_DATOS_NODE_H
 #define PROYECTO_1_DATOS_NODE_H
-
+#include <cstddef>
 template <class T>
 class Node{
 private:

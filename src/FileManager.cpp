@@ -35,7 +35,28 @@ BST<Client> FileManager::readClientCSV(const string &filename) {
     }
     return _clientTree;
 }
+int FileManager::calculatePriority(string pA, string pB, string pC, string pD) {
+    int a, b, c, d;
+    if(pA == "Yes"){ //Ninio
+        a=20;
+    }else{a=0;}
+    if(pB == "Yes"){ //Embarazada
+        b=25;
+    }else{b=0;}
+    if(pC == "Yes"){ //Adulto mayor
+        c=20;
+    }else{c=0;}
+    if(pD=="1"){ //Categoria 1
+        d=20;
+    }
+    if(pD=="2"){ //Categoria 2
+        d=10;
+    }else{ //Categoria 3
+        d=0;
+    }
 
+    return a+b+c+d;
+}
 Client FileManager::loadClient(ifstream &csvInfo) {
     Client _client;
     string name, id, kid, pregnant, elderly, cat;
@@ -46,11 +67,14 @@ Client FileManager::loadClient(ifstream &csvInfo) {
     getline(csvInfo, elderly, ',');
     getline(csvInfo, cat, '\n');
 
+
+
     _client.setName(name);
     _client.setId(id);
     _client.setKid(kid);
     _client.setPregnant(pregnant);
     _client.setElderly(elderly);
     _client.setCategory(cat);
+    _client.setPriority(calculatePriority(kid,pregnant,elderly,cat));
     return _client;
 }

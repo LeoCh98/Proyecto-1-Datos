@@ -1,7 +1,3 @@
-//
-// Created by gerso on 9/1/2021.
-//
-
 #ifndef PROYECTO_1_DATOS_FILEMANAGER_H
 #define PROYECTO_1_DATOS_FILEMANAGER_H
 #include "Client.h"
@@ -17,7 +13,7 @@ public:
     const string &getFilePath() const;
     BST<Client> readClientCSV (const string &filename);
     Client loadClient(ifstream &csvInfo);
-
+    int calculatePriority(string, string, string, string);
 
 };
 

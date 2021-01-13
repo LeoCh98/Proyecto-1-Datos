@@ -1,7 +1,3 @@
-//
-// Created by leoch on 09/01/2021.
-//
-
 #ifndef PROYECTO_1_DATOS_BST_H
 #define PROYECTO_1_DATOS_BST_H
 #include "Node.h"
