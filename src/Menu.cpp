@@ -1,19 +1,8 @@
-//
-// Created by gerso on 12/1/2021.
-//
-
 #include "Menu.h"
-
-
-
 Menu::Menu() {
-
 }
-
 Menu::~Menu() {
-
 }
-
 void Menu::DataMenu() {
     int opcion;
     do {
@@ -58,8 +47,6 @@ void Menu::DataMenu() {
             case 6:{
                 break;
             }
-
-
         }
     }while(opcion<7);
 
