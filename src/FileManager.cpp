@@ -5,12 +5,7 @@
 #include "FileManager.h"
 
 FileManager::FileManager() {
-    string file_path = __FILE__;
-    file_path = file_path.substr(0, file_path.rfind("/"));
-    string dir_path = file_path.substr(0, file_path.rfind("/"));
-    dir_path = dir_path.substr(0, file_path.rfind("/"));
-    filePath = dir_path + "/archivos/";
-
+    filePath = "..\\..\\archivos\\";
 }
 
 void FileManager::setFilepath(const std::string &filePath) {
@@ -27,7 +22,7 @@ BST<Client> FileManager::readClientCSV(const string &filename) {
     try {
         csv.open( filePath + filename, ios::in);
         if(csv.good()) { //+
-            csv.seekg(52); //Salto de linea para no leer la primera linea del archivo (en teoria en esa primera linea hay 52 caracteres)
+            csv.seekg(55); //Break line
             while (!csv.eof() && csv.good()) {
                 Client _client = loadClient(csv);
                 _clientTree.insert(_client);
@@ -45,12 +40,13 @@ Client FileManager::loadClient(ifstream &csvInfo) {
     Client _client;
     string name, id, kid, pregnant, elderly, cat;
     getline(csvInfo, name, ',');
-    getline(csvInfo, name, ',');
     getline(csvInfo, id, ',');
     getline(csvInfo, kid, ',');
     getline(csvInfo, pregnant, ',');
-    csvInfo >> cat;
-    csvInfo.ignore();
+    getline(csvInfo, elderly, ',');
+    getline(csvInfo, cat, '\n');
+
+    //csvInfo.ignore();
     //csvInfo.ignore();
 
     _client.setName(name);
