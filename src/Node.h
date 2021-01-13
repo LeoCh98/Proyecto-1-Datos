@@ -19,7 +19,7 @@ public:
     Node<T>* findMax(Node<T>* t);
     Node<T>* findMin(Node<T>* t);
     Node<T>* insert(T x, Node<T>* t);
-    Node<T>* makeEmpty(Node<T>* t);
+    //Node<T>* makeEmpty(Node<T>* t);
 
     T getData() const;
     Node<T> *getLeft() const;
@@ -28,19 +28,21 @@ public:
 
 template <class T>
 Node<T>::Node() = default;
-
+/*
 template <class T>
 Node<T>* Node<T>::makeEmpty(Node<T>* t) {
     if(t == NULL)
         return NULL;
     {
-        makeEmpty(t->getLeft());
-        makeEmpty(t->getRight());
+        if(left != NULL)
+            makeEmpty(t->left);
+        if(right != NULL)
+            makeEmpty(t->right);
         delete t;
     }
     return NULL;
 }
-
+*/
 template <class T>
 Node<T>* Node<T>::insert(T x, Node<T>* t)
 {
@@ -133,7 +135,7 @@ T Node<T>::getData() const {
 
 template<class T>
 Node<T> *Node<T>::getLeft() const {
-    return left;
+        return left;
 }
 
 template<class T>

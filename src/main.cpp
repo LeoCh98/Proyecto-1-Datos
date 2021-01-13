@@ -29,7 +29,9 @@ int main() {
     std::cout << fm.getFilePath() << std::endl;
     BST<Client> _Clients;
     _Clients = fm.readClientCSV("data.csv");
-    //_Clients.display();
+    _Clients.display();
+
+
 
     return 0;
 }

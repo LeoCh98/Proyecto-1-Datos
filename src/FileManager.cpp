@@ -46,9 +46,6 @@ Client FileManager::loadClient(ifstream &csvInfo) {
     getline(csvInfo, elderly, ',');
     getline(csvInfo, cat, '\n');
 
-    //csvInfo.ignore();
-    //csvInfo.ignore();
-
     _client.setName(name);
     _client.setId(id);
     _client.setKid(kid);

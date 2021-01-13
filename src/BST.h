@@ -17,6 +17,7 @@ public:
     void remove(T x);
     void display();
     void search(T x);
+
 };
 
 template<class T>
@@ -26,7 +27,7 @@ BST<T>::BST() {
 
 template<class T>
 BST<T>::~BST() {
-    root = root->makeEmpty(root);
+    //root = root->makeEmpty(root);
 }
 
 template<class T>
@@ -49,5 +50,6 @@ template<class T>
 void BST<T>::search(T x) {
     root = root->find(root, x);
 }
+
 
 #endif //PROYECTO_1_DATOS_BST_H
