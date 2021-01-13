@@ -22,23 +22,14 @@ int main() {
 
     _clients.display();
      //...
-     */
+*/
 
-
-    /*
-     * Ahí arriba esta la prueba del arbol si quieren revisarla
-     * ahorita el problema que tengo es que no me quiere abrir el archivo porque
-     * luego del if(csv.good()) del metodo readClientCSV sale del metodo o sea ni siquiera entra
-     * entonces lo mismo lo revisamos mañana juntos
-    */
 
     FileManager fm;
     std::cout << fm.getFilePath() << std::endl;
-    BST<Client> Clients;
-    Clients = fm.readClientCSV("data.csv");
-    Clients.display();
+    BST<Client> _Clients;
+    _Clients = fm.readClientCSV("data.csv");
+    //_Clients.display();
 
-
-
-    return -1;
+    return 0;
 }

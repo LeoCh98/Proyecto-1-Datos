@@ -22,6 +22,8 @@ public:
     Node<T>* makeEmpty(Node<T>* t);
 
     T getData() const;
+    Node<T> *getLeft() const;
+    Node<T> *getRight() const;
 };
 
 template <class T>
@@ -32,8 +34,8 @@ Node<T>* Node<T>::makeEmpty(Node<T>* t) {
     if(t == NULL)
         return NULL;
     {
-        makeEmpty(t->left);
-        makeEmpty(t->right);
+        makeEmpty(t->getLeft());
+        makeEmpty(t->getRight());
         delete t;
     }
     return NULL;
@@ -127,6 +129,16 @@ Node<T>* Node<T>::find(Node<T>* t, T x) {
 template<class T>
 T Node<T>::getData() const {
     return data;
+}
+
+template<class T>
+Node<T> *Node<T>::getLeft() const {
+    return left;
+}
+
+template<class T>
+Node<T> *Node<T>::getRight() const {
+    return right;
 }
 
 
