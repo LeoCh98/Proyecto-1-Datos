@@ -1,8 +1,8 @@
 #include "Client.h"
 
 Client::Client(const string &name, const string &id, const string &kid, const string &pregnant, const string &elderly,
-               const string &category, const int priority ) : name(name), id(id), kid(kid), pregnant(pregnant), elderly(elderly),
-                                         category(category),priority(priority) {}
+               const string &category) : name(name), id(id), kid(kid), pregnant(pregnant), elderly(elderly),
+                                         category(category){}
 
 Client::Client() = default;
 
@@ -84,12 +84,4 @@ string Client::toString() {
     stringstream output;
     output << name << "," << id << "," << kid << "," << pregnant << "," << elderly << "," << category << "," << priority() << "%" <<endl;
     return output.str();
-}
-
-int Client::getPriority() const {
-    return priority;
-}
-
-void Client::setPriority(int priority) {
-    Client::priority = priority;
 }

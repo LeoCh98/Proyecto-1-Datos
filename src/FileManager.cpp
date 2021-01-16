@@ -75,6 +75,5 @@ Client FileManager::loadClient(ifstream &csvInfo) {
     _client.setPregnant(pregnant);
     _client.setElderly(elderly);
     _client.setCategory(cat);
-    _client.setPriority(calculatePriority(kid,pregnant,elderly,cat));
     return _client;
 }
