@@ -1,3 +1,7 @@
+//
+// Created by leoch on 09/01/2021.
+//
+
 #ifndef PROYECTO_1_DATOS_CLIENT_H
 #define PROYECTO_1_DATOS_CLIENT_H
 #include <iostream>
@@ -12,14 +16,9 @@ private:
     string pregnant;
     string elderly;
     string category;
-    int priority;
-public:
-
-
 public:
     Client(const string &name, const string &id, const string &kid, const string &pregnant, const string &elderly,
-           const string &category, const int priority);
-
+           const string &category);
     Client();
     virtual ~Client();
     const string &getName() const;
@@ -34,8 +33,7 @@ public:
     void setElderly(const string &elderly);
     const string &getCategory() const;
     void setCategory(const string &category);
-    int getPriority() const;
-    void setPriority(int priority);
+    int priority();
     string toString();
 };
 

@@ -58,9 +58,31 @@ void Client::setCategory(const string &category) {
     Client::category = category;
 }
 
+int Client::priority() {
+    int _priority=0;
+    if(kid=="Yes"||kid=="yes")
+        _priority+=20;
+    if(pregnant=="Yes"||pregnant=="yes")
+        _priority+=25;
+    if(elderly=="Yes"||elderly=="yes")
+        _priority+=35;
+    switch(stoi(category)){
+        case 1:
+            _priority+=20;
+            break;
+        case 2:
+            _priority+=10;
+            break;
+        case 3:
+            _priority+=0;
+            break;
+    }
+    return _priority;
+}
+
 string Client::toString() {
     stringstream output;
-    output<<name<<","<<id<<","<<kid<<","<<pregnant<<","<<elderly<<","<<category<<endl;
+    output << name << "," << id << "," << kid << "," << pregnant << "," << elderly << "," << category << "," << priority() << "%" <<endl;
     return output.str();
 }
 

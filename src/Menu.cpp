@@ -1,53 +1,129 @@
 #include "Menu.h"
+
 Menu::Menu() {
+    clientTree = fm.readClientCSV("data.csv");
 }
 Menu::~Menu() {
 }
 void Menu::DataMenu() {
-    int opcion;
+    string option;
     do {
         cout << "\n\n";
-        cout << "\n\n";
         cout << " _________________________________________________________ \n";
-        cout << "|   Bienvenidos al programa de datos                      |\n";
+        cout << "|                Welcome to Bank One                      |\n";
         cout << "|_________________________________________________________|\n";
         cout << "|                                                         |\n";
-        cout << "|       1. Encolar todos los clientes                     |\n";
+        cout << "|       1. Queue all clients                              |\n";
         cout << "|                                                         |\n";
-        cout << "|       2. Encolar un cliente                             |\n";
+        cout << "|       2. Queue a client                                 |\n";
         cout << "|                                                         |\n";
-        cout << "|       3. Atender los siguientes 5 clientes              |\n";
+        cout << "|       3. Serve the next 5 clients                       |\n";
         cout << "|                                                         |\n";
-        cout << "|       4. Mostrar el siguiente cliente a ser atendido    |\n";
+        cout << "|       4. Show the next client to be served              |\n";
         cout << "|                                                         |\n";
-        cout << "|       5. Simulación de Atención de Clientes             |\n";
+        cout << "|       5. Client Service Simulation                      |\n";
         cout << "|                                                         |\n";
-        cout << "|       6. Agregar un Cliente Nuevo                       |\n";
+        cout << "|       6. Add a new client                               |\n";
         cout << "|                                                         |\n";
-        cout << "|       7. Salir                                          |\n";
+        cout << "|       7. Exit                                           |\n";
         cout << "|_________________________________________________________|\n";
-        cout << "Digite su opcion: ";
-        cin >> opcion;
-        switch(opcion) {
+        cout << "Enter a option: ";
+        cin >> option;
+        switch(atoi(option.c_str())) {
             case 1:{
+                caseOne();
                 break;
             }
             case 2:{
+                caseTwo();
                 break;
             }
             case 3:{
+                caseThree();
                 break;
             }
             case 4:{
+                caseFour();
                 break;
             }
             case 5:{
+                caseFive();
                 break;
             }
             case 6:{
+                caseSix();
+                break;
+            }
+            case 7:{
+                caseSeven();
+                cout << "\n\t Thank you for using this program... \n";
+                break;
+            }
+            default: {
+                cout << "\n\t Invalid option... Please, insert again...\n\n";
                 break;
             }
         }
-    }while(opcion<7);
+    }while(atoi(option.c_str())!=7);
+
+}
+
+void Menu::caseOne() {
+    cout<<"\nQueue all clients...\n\n";
+    clientTree.getCopy(clientQueue);
+    clientQueue.display();
+    cout << "Clients was queue successfully...\n";
+}
+
+void Menu::caseTwo() {
+    cout<<"\nQueue a client...\n\n";
+}
+
+void Menu::caseThree() {
+    while(!clientQueue.empty()){
+        cout<<"\nServe the next 5 clients...\n\n";
+        for (int i = 1; i <= 5; i++) {
+            cout << "Client#" << i << ":\n";
+            clientQueue.pop();
+            cout << "Client was attended successfully...\n";
+        }
+    }
+}
+
+void Menu::caseFour() {
+    cout<<"\nShow the next client to be served...\n\n";
+    clientQueue.front();
+}
+
+void Menu::caseFive() {
+    while (!clientQueue.empty()) {
+        cout << "\nClient Service Simulation\n\n";
+        for (int i = 0; i <= clientQueue.size(); i++) {
+            cout << "Client#" << i << ":\n";
+            clientQueue.pop();
+            cout << "Client was attended successfully...\n";
+        }
+    }
+}
+
+void Menu::caseSix() {
+    string name, id, kid, pregnant, elderly, cat,resp;
+    cout<<"\nAdd a new client...\n\n";
+    cout<<"Please enter the following data:\n";
+    cout<<"Name: ";cin>>name;
+    cout<<"\nId: ";cin>>id;
+    cout<<"\nHas a child with you?: (Yes or No) ";cin>>kid;
+    cout<<"\nAre you pregnant?: (Yes or No) "; cin>>pregnant;
+    cout<<"\nAre you an older adult?: (Yes or No) ";cin>>elderly;
+    cout<<"\nWhat category do you belong to?: (1,2,3) ";cin>>cat;
+    Client _client(name,id,kid,pregnant,elderly,cat);
+    cout<<endl<<_client.toString()<<endl;
+    cout<<"Do you want to introduce the new user to the system? (Yes or No)\n";
+    cin>>resp;
+    if(resp == "Yes" || resp == "YES" || resp == "yes")
+        clientTree.insert(_client);
+}
+
+void Menu::caseSeven() {
 
 }

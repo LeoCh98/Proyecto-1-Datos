@@ -4,7 +4,8 @@
 
 #ifndef PROYECTO_1_DATOS_NODE_H
 #define PROYECTO_1_DATOS_NODE_H
-#include <cstddef>
+#include "HeapPriorityQueue.h"
+
 template <class T>
 class Node{
 private:
@@ -13,14 +14,13 @@ private:
         Node<T>* right;
 public:
     Node();
-    Node<T>* find(Node<T>* t, T x);
+    Node<T>* find(Node<T>* t, int x);
     void inorder(Node<T>* t);
     Node<T>* remove(T x, Node<T>* t);
     Node<T>* findMax(Node<T>* t);
     Node<T>* findMin(Node<T>* t);
     Node<T>* insert(T x, Node<T>* t);
-    //Node<T>* makeEmpty(Node<T>* t);
-
+    void getAllData(Node<T>* t, HeapPriorityQueue<T>& queue);
     T getData() const;
     Node<T> *getLeft() const;
     Node<T> *getRight() const;
@@ -28,21 +28,7 @@ public:
 
 template <class T>
 Node<T>::Node() = default;
-/*
-template <class T>
-Node<T>* Node<T>::makeEmpty(Node<T>* t) {
-    if(t == NULL)
-        return NULL;
-    {
-        if(left != NULL)
-            makeEmpty(t->left);
-        if(right != NULL)
-            makeEmpty(t->right);
-        delete t;
-    }
-    return NULL;
-}
-*/
+
 template <class T>
 Node<T>* Node<T>::insert(T x, Node<T>* t)
 {
@@ -116,13 +102,23 @@ void Node<T>::inorder(Node<T>* t) {
     inorder(t->right);
 }
 
+template<class T>
+void Node<T>::getAllData(Node<T>* t, HeapPriorityQueue<T>& queue) {
+    if(t == NULL)
+        return;
+    getAllData(t->left,queue);
+    queue.insert(t->getData());
+    getAllData(t->right,queue);
+
+}
+
 template <class T>
-Node<T>* Node<T>::find(Node<T>* t, T x) {
+Node<T>* Node<T>::find(Node<T>* t, int x) {
     if(t == NULL)
         return NULL;
-    else if(x < t->data)
+    else if(x != t->getData().getId())
         return find(t->left, x);
-    else if(x > t->data)
+    else if (x != t->data.getId())
         return find(t->right, x);
     else
         return t;
