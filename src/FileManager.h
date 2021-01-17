@@ -13,8 +13,7 @@ public:
     const string &getFilePath() const;
     BST<Client> readClientCSV (const string &filename);
     Client loadClient(ifstream &csvInfo);
-    int calculatePriority(string, string, string, string);
-
+    void writeClientCSV (BST<Client>& _clientTree);
 };
 
 

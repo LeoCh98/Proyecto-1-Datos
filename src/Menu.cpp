@@ -27,8 +27,7 @@ void Menu::DataMenu() {
         cout << "|                                                         |\n";
         cout << "|       7. Exit                                           |\n";
         cout << "|_________________________________________________________|\n";
-        cout << "Enter a option: ";
-        cin >> option;
+        cout << "Enter a option: "; cin >> option;
         switch(atoi(option.c_str())) {
             case 1:{
                 caseOne();
@@ -125,5 +124,5 @@ void Menu::caseSix() {
 }
 
 void Menu::caseSeven() {
-
+    fm.writeClientCSV(clientTree);
 }

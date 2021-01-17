@@ -15,6 +15,7 @@ public:
     void remove(T x);
     void display();
     void getCopy(HeapPriorityQueue<T>& queue);
+    void saveTree(ofstream& csv);
     void search(int x);
     int getSize() const;
 };
@@ -44,13 +45,17 @@ void BST<T>::remove(T x) {
 template<class T>
 void BST<T>::display() {
     root->inorder(root);
-    std::cout << std::endl;
 }
 
 template<class T>
 void BST<T>::getCopy(HeapPriorityQueue<T>& queue) {
     root->getAllData(root,queue);
     std::cout << std::endl;
+}
+
+template<class T>
+void BST<T>::saveTree(ofstream& csv) {
+        root->saveNode(root,csv);
 }
 
 template<class T>

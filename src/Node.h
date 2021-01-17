@@ -21,6 +21,7 @@ public:
     Node<T>* findMin(Node<T>* t);
     Node<T>* insert(T x, Node<T>* t);
     void getAllData(Node<T>* t, HeapPriorityQueue<T>& queue);
+    void saveNode(Node<T>* t,ofstream& csv);
     T getData() const;
     Node<T> *getLeft() const;
     Node<T> *getRight() const;
@@ -110,6 +111,15 @@ void Node<T>::getAllData(Node<T>* t, HeapPriorityQueue<T>& queue) {
     queue.insert(t->getData());
     getAllData(t->right,queue);
 
+}
+
+template<class T>
+void Node<T>::saveNode(Node<T>* t, ofstream& csv) {
+    if(t != NULL) {
+        saveNode(t->getLeft(),csv);
+        csv << t->getData().toString();
+        saveNode(t->getRight(),csv);
+    }
 }
 
 template <class T>
