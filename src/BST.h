@@ -12,7 +12,6 @@ public:
     BST();
     virtual ~BST();
     void insert(T x);
-    void remove(T x);
     void display();
     void getCopy(HeapPriorityQueue<T>& queue);
     void saveTree(ofstream& csv);
@@ -28,18 +27,13 @@ BST<T>::BST() {
 
 template<class T>
 BST<T>::~BST() {
-    //root = root->makeEmpty(root);
+
 }
 
 template<class T>
 void BST<T>::insert(T x) {
     root = root->insert(x, root);
     size++;
-}
-
-template<class T>
-void BST<T>::remove(T x) {
-    root = root->remove(x, root);
 }
 
 template<class T>
@@ -60,7 +54,9 @@ void BST<T>::saveTree(ofstream& csv) {
 
 template<class T>
 void BST<T>::search(int x) {
-    root = root->find(root, x);
+    if(!root->find(root,x)){
+        cout<<"Queued Node.\n";
+    }
 }
 
 template<class T>

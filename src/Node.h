@@ -14,7 +14,7 @@ private:
         Node<T>* right;
 public:
     Node();
-    Node<T>* find(Node<T>* t, int x);
+    bool find(Node<T>* t, int x);
     void inorder(Node<T>* t);
     Node<T>* remove(T x, Node<T>* t);
     Node<T>* findMax(Node<T>* t);
@@ -123,15 +123,14 @@ void Node<T>::saveNode(Node<T>* t, ofstream& csv) {
 }
 
 template <class T>
-Node<T>* Node<T>::find(Node<T>* t, int x) {
-    if(t == NULL)
-        return NULL;
-    else if(x != t->getData().getId())
-        return find(t->left, x);
-    else if (x != t->data.getId())
-        return find(t->right, x);
-    else
-        return t;
+bool Node<T>::find(Node<T>* t, int x) {
+    if ( t == NULL )
+        return false;
+    if ( x == stoi( t->getData().getId() ) )
+        return true;
+    if ( x < stoi( t->getData().getId() ) )
+        return find(t->getLeft(),x);
+    return find(t->getRight(),x);
 }
 
 template<class T>

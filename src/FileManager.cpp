@@ -60,7 +60,7 @@ Client FileManager::loadClient(ifstream &csvInfo) {
 void FileManager::writeClientCSV(BST<Client>& _clientTree) {
     ofstream csv;
     try {
-        csv.open( filePath + "NewData.csv", ios::out);
+        csv.open( filePath + "NewData.csv", ios::out); //just for not saving in the same csv
             if (csv.good()) {
                _clientTree.saveTree(csv);
             }

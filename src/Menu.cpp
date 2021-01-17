@@ -79,14 +79,15 @@ void Menu::caseTwo() {
 }
 
 void Menu::caseThree() {
-    while(!clientQueue.empty()){
+    if(!clientQueue.empty()){
         cout<<"\nServe the next 5 clients...\n\n";
         for (int i = 1; i <= 5; i++) {
             cout << "Client#" << i << ":\n";
             clientQueue.pop();
             cout << "Client was attended successfully...\n";
         }
-    }
+    } else
+        cout<<"Queue is empty...\n";
 }
 
 void Menu::caseFour() {
@@ -95,21 +96,22 @@ void Menu::caseFour() {
 }
 
 void Menu::caseFive() {
-    while (!clientQueue.empty()) {
         cout << "\nClient Service Simulation\n\n";
-        for (int i = 0; i <= clientQueue.size(); i++) {
+        if(clientQueue.empty())
+            cout<<"Queue is empty...\n";
+        int i = 1;
+        while(!clientQueue.empty()){
             cout << "Client#" << i << ":\n";
             clientQueue.pop();
-            cout << "Client was attended successfully...\n";
+            cout << "Client was attended successfully...\n"; i++;
         }
-    }
 }
 
 void Menu::caseSix() {
     string name, id, kid, pregnant, elderly, cat,resp;
     cout<<"\nAdd a new client...\n\n";
     cout<<"Please enter the following data:\n";
-    cout<<"Name: ";cin>>name;
+    cout<<"Name: "; cin>>name;
     cout<<"\nId: ";cin>>id;
     cout<<"\nHas a child with you?: (Yes or No) ";cin>>kid;
     cout<<"\nAre you pregnant?: (Yes or No) "; cin>>pregnant;
